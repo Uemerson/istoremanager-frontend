@@ -1,9 +1,12 @@
 import React from 'react';
 
 import { AuthProvider } from './auth';
+import { SidebarProvider } from './sidebar';
 
 const AppProvider: React.FC = ({ children }) => (
-  <AuthProvider>{children}</AuthProvider>
+  <AuthProvider>
+    <SidebarProvider>{children}</SidebarProvider>
+  </AuthProvider>
 );
 
 export default AppProvider;
