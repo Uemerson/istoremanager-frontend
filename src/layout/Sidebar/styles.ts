@@ -32,6 +32,9 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  nested: {
+    paddingLeft: theme.spacing(6),
+  },
 }));
 
 export default useStyles;

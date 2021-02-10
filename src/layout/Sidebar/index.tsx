@@ -14,15 +14,24 @@ import {
   ListItemText,
   Hidden,
   Typography,
+  Collapse,
 } from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/People';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import MenuIcon from '@material-ui/icons/Menu';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 
 import useStyles from './styles';
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
+
+  const classes = useStyles();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [openCustomer, setOpenCustomer] = React.useState(false);
+  const [openProduct, setOpenProduct] = React.useState(false);
 
   const isActive = useCallback(
     (value: string): boolean => {
@@ -31,11 +40,16 @@ const Sidebar: React.FC = () => {
     [location.pathname],
   );
 
-  const classes = useStyles();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const handleCustomer = () => {
+    setOpenCustomer(!openCustomer);
+  };
+
+  const handleProduct = () => {
+    setOpenProduct(!openProduct);
   };
 
   const drawer = (
@@ -51,12 +65,62 @@ const Sidebar: React.FC = () => {
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItem>
-        <ListItem button component={Link} to="/customer">
+
+        <ListItem button onClick={handleCustomer}>
           <ListItemIcon>
-            <PeopleIcon color={isActive('/customer') ? 'primary' : 'inherit'} />
+            <PeopleIcon />
           </ListItemIcon>
-          <ListItemText primary="Clientes" />
+          <ListItemText primary="Cliente" />
+          {openCustomer ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
+        <Collapse in={openCustomer} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItem
+              button
+              className={classes.nested}
+              component={Link}
+              to="/customer"
+            >
+              <ListItemText primary="Novo cliente" />
+            </ListItem>
+            <ListItem
+              button
+              className={classes.nested}
+              component={Link}
+              to="/customers"
+            >
+              <ListItemText primary="Listar clientes" />
+            </ListItem>
+          </List>
+        </Collapse>
+
+        <ListItem button onClick={handleProduct}>
+          <ListItemIcon>
+            <ShoppingBasketIcon />
+          </ListItemIcon>
+          <ListItemText primary="Produto" />
+          {openProduct ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={openProduct} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItem
+              button
+              className={classes.nested}
+              component={Link}
+              to="/product"
+            >
+              <ListItemText primary="Novo produto" />
+            </ListItem>
+            <ListItem
+              button
+              className={classes.nested}
+              component={Link}
+              to="/products"
+            >
+              <ListItemText primary="Listar produtos" />
+            </ListItem>
+          </List>
+        </Collapse>
       </List>
     </div>
   );
