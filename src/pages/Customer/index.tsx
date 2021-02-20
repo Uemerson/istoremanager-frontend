@@ -83,6 +83,7 @@ const Customer: React.FC = () => {
                   KeyboardButtonProps={{
                     'aria-label': 'change date',
                   }}
+                  fullWidth
                 />
               </MuiPickersUtilsProvider>
             </Grid>
