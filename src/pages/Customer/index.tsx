@@ -64,8 +64,8 @@ const Customer: React.FC = () => {
                 name="fullName"
                 label="Nome completo"
                 fullWidth
-                autoComplete="given-name"
                 variant="outlined"
+                autoComplete="off"
               />
             </Grid>
             <Grid item xs={12}>
@@ -84,6 +84,7 @@ const Customer: React.FC = () => {
                     'aria-label': 'change date',
                   }}
                   fullWidth
+                  autoComplete="off"
                 />
               </MuiPickersUtilsProvider>
             </Grid>

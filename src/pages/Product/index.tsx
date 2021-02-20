@@ -99,7 +99,7 @@ const Product: React.FC = () => {
                 name="fullName"
                 label="Descrição do produto"
                 fullWidth
-                autoComplete="given-name"
+                autoComplete="off"
                 variant="outlined"
               />
             </Grid>
@@ -115,6 +115,7 @@ const Product: React.FC = () => {
                 }}
                 variant="outlined"
                 fullWidth
+                autoComplete="off"
               />
             </Grid>
             <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
@@ -129,6 +130,7 @@ const Product: React.FC = () => {
                 }}
                 variant="outlined"
                 fullWidth
+                autoComplete="off"
               />
             </Grid>
             <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
