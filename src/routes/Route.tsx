@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import Sidebar from '../layout/Sidebar';
-import useStyles from './styles';
+import useStyles from '../layout/stylesLayout';
 import { useAuth } from '../hooks/auth';
 
 interface RouteProps extends ReactDOMRouteProps {

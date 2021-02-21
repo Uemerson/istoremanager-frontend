@@ -2,10 +2,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+    },
   },
   content: {
-    flexGrow: 1,
+    [theme.breakpoints.up('sm')]: {
+      flexGrow: 1,
+    },
     padding: theme.spacing(3),
   },
   toolbar: theme.mixins.toolbar,
